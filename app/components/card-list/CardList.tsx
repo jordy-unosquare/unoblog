@@ -2,9 +2,9 @@
 import React from 'react'
 import Card from '../card/Card'
 import Pagination from '../pagination/Pagination'
-import { posts } from '@/app/lib/placeholder-data';
 
 import styles from './CardList.module.css'
+import { posts } from '~/lib/placeholder-data';
 
 interface CardListProps {
     page: number;

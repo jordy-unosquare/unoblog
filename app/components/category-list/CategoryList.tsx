@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import { categories } from '@/app/lib/placeholder-data'
 
 import styles from './CategoryList.module.css'
+import { categories } from '~/lib/placeholder-data'
 
 const CategoryList = async () => {
 

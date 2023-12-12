@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 
 import styles from "./MenuCategories.module.css";
-import { categories } from "@/app/lib/placeholder-data";
+import { categories } from "~/lib/placeholder-data";
 
 
 const MenuCategories = () => {

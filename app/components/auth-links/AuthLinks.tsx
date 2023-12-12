@@ -1,9 +1,9 @@
 "use client";
 import { useState } from 'react';
 import Link from 'next/link'
-import { status } from '@/app/lib/placeholder-data';
 
 import styles from './AuthLinks.module.css'
+import { status } from '~/lib/placeholder-data';
 
 const AuthLinks = () => {
     const [open, setOpen] = useState(false)
