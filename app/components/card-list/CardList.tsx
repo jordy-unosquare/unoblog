@@ -4,18 +4,23 @@ import Card from '../card/Card'
 import Pagination from '../pagination/Pagination'
 
 import styles from './CardList.module.css'
-import { posts } from '~/lib/placeholder-data';
+import { getPosts } from 'lib/data';
 
 interface CardListProps {
-    page: number;
     cat: string;
+    page: number;
+    limit: number;
 }
 
-const CardList = ({ page, cat }: CardListProps) => {
-    const POST_PER_PAGE = 4;
-
-    const hasPrev = POST_PER_PAGE * (page - 1) > 0;
-    const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < posts.length;
+const CardList = async ({ page, cat, limit }: CardListProps) => {
+    const {
+        posts,
+        pagination: {
+            currentPage,
+            hasPrev,
+            hasNext
+        }
+    } = await getPosts({ page, cat, limit })
 
     return (
         <div className={styles.container}>
@@ -26,7 +31,11 @@ const CardList = ({ page, cat }: CardListProps) => {
                 ))}
             </div>
 
-            <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext} />
+            <Pagination
+                currentPage={currentPage}
+                hasPrev={hasPrev}
+                hasNext={hasNext}
+            />
         </div>
     );
 }

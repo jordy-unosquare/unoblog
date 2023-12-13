@@ -9,7 +9,6 @@ import Image from 'next/image';
 const AuthLinks = () => {
     const { data: session } = useSession();
 
-
     const handleLogout = () => {
         void signOut();
     }

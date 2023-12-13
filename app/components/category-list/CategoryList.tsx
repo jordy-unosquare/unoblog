@@ -2,22 +2,23 @@ import React from 'react'
 import Link from 'next/link'
 
 import styles from './CategoryList.module.css'
-import { categories } from '~/lib/placeholder-data'
+import { getCategories } from 'lib/data';
 
 const CategoryList = async () => {
+    const categories = await getCategories();
 
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Popular Categories</h1>
             <div className={styles.categories}>
-                {categories.map((item) => (
+                {categories.map((category) => (
                     <Link
-                        href={`/blog?cat=${item.slug}`}
-                        key={item.id}
+                        href={`/blog?cat=${category.slug}&page=1&limit=4`}
+                        key={category.id}
                         className={`${styles.category}`}
-                        style={{ backgroundColor: item.color! }}
+                        style={{ backgroundColor: category.color }}
                     >
-                        #{item.title}
+                        #{category.slug}
                     </Link>
                 ))}
             </div>
