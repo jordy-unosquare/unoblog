@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import FooterAuthLinks from "../footer-auth-links/FooterAuthLinks";
 
 import styles from "./Footer.module.css";
 import { getCategories } from "@/lib/data";
@@ -12,8 +13,8 @@ const Footer = async () => {
         <div className={styles.container}>
             <div className={styles.info}>
                 <div className={styles.logo}>
-                    <Image src="/logo.png" alt="unoblog" width={50} height={50} style={{ borderRadius: '50%' }} />
-                    <h1 className={styles.logoText}>unoBlog</h1>
+                    <Image src="/logo.png" alt="Nexus blog" width={50} height={50} style={{ borderRadius: '50%' }} />
+                    <h1 className={styles.logoText}>Nexus Blog</h1>
                 </div>
                 <p className={styles.desc}>
                     Technology is a powerful tool, but, it is the people who build it and use it that truly drive innovation and progress.
@@ -25,6 +26,7 @@ const Footer = async () => {
                     <Link href="/">Home</Link>
                     <Link href="/about">About</Link>
                     <Link href="/contact">Contact</Link>
+                    <FooterAuthLinks />
                 </div>
                 <div className={styles.list}>
                     <span className={styles.listTitle}>Categories</span>
