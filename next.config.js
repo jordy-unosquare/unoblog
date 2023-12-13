@@ -7,12 +7,7 @@
 /** @type {import("next").NextConfig} */
 const config = {
     images: {
-        remotePatterns: [
-          {
-            protocol: 'https',
-            hostname: 'res.cloudinary.com',
-          },
-        ],
+      domains: ['res.cloudinary.com', 'avatars.githubusercontent.com'],
       },
 };
 

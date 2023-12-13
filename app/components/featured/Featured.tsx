@@ -3,12 +3,13 @@ import React from 'react'
 import Image from 'next/image'
 
 import styles from './Featured.module.css'
-
+import { getSession } from 'next-auth/react';
+const session = getSession();
 const Featured = () => {
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>
-                <b>Hello there!</b> Discover the best place to work.
+                <b>Hello there! {JSON.stringify(session)}</b> Discover the best place to work.
             </h1>
             <div className={styles.post}>
                 <div className={styles.imageContainer}>
