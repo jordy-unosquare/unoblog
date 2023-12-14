@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { getServerAuthSession } from "@/lib/server/auth";
-import { db } from "@/lib/server/db";
-import { Comment } from "@prisma/client";
+import type { Comment } from "@prisma/client";
+import { db } from "lib/server/db";
+import { getServerAuthSession } from "lib/server/auth";
 
 // GET ALL COMMENTS OF A POST
 export const GET = async (request: Request): Promise<Response> => {

@@ -3,12 +3,14 @@ import React from 'react'
 import Image from 'next/image'
 
 import styles from './Featured.module.css'
+import { getServerAuthSession } from 'lib/server/auth';
 
-const Featured = () => {
+const Featured = async () => {
+    const session = await getServerAuthSession();
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>
-                <b>Hello there!</b> Discover the best place to work.
+                <b>Hello there {session?.user?.name}!</b> Discover the best place to work.
             </h1>
             <div className={styles.post}>
                 <div className={styles.imageContainer}>

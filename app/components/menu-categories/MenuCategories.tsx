@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { getCategories } from "@/lib/data";
 
 import styles from "./MenuCategories.module.css";
+import { getCategories } from "lib/data";
 
 const MenuCategories = async () => {
   const categories = await getCategories();

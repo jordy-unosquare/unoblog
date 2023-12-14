@@ -1,7 +1,7 @@
-import { db } from "@/lib/server/db";
-import { getServerAuthSession } from "@/lib/server/auth";
-import { PaginatedPostsResponse } from "@/lib/definitions";
-import { Post } from "@prisma/client";
+import type { PaginatedPostsResponse } from "lib/definitions";
+import type { Post } from "@prisma/client";
+import { getServerAuthSession } from "lib/server/auth";
+import { db } from "lib/server/db";
 
 // GET POSTS
 export const GET = async (request: Request): Promise<Response> => {
@@ -64,14 +64,14 @@ export const GET = async (request: Request): Promise<Response> => {
 export const POST = async (req: Request): Promise<Response> => {
   const session = await getServerAuthSession();
 
-  if (!session || !session.user) {
+  if (!session?.user) {
     return new Response(JSON.stringify({ message: "Not Authenticated!" }), {
       status: 401,
     });
   }
 
   try {
-    const body = await req.json();
+    const body = await req.json() as Post;
 
     const post = await db.post.create({
       data: {
