@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Post } from "@/lib/definitions";
 
 import styles from "./Card.module.css";
+import type { Post } from "@prisma/client";
 
 const Card = ({ post }: { post: Post }) => {
   return (

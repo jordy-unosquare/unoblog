@@ -1,5 +1,5 @@
-import { Category, Post, User } from "@prisma/client";
-import { PaginatedPostsResponse } from "./definitions";
+import type { Category, Post, User } from "@prisma/client";
+import type { PaginatedPostsResponse } from "./definitions";
 
 export const getCategories = async (): Promise<Category[]> => {
   try {

@@ -1,4 +1,4 @@
-import { db } from "@/lib/server/db";
+import { db } from "lib/server/db";
 
 // GET SINGLE POST
 export const GET = async (

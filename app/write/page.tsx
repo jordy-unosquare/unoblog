@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import ReactQuill from "react-quill";
 import { type Category } from "@prisma/client";
-import { getCategories, uploadToCloudinary } from "@/lib/data";
 
 import styles from "./writePage.module.css";
 import "react-quill/dist/quill.bubble.css";
+import { getCategories, uploadToCloudinary } from "lib/data";
 
 const WritePage = () => {
   const { status } = useSession();
@@ -32,7 +32,7 @@ const WritePage = () => {
   }, [status, router]);
 
   useEffect(() => {
-    getCategories().then(setCategoryList);
+    getCategories().then(setCategoryList).catch(console.error);
   }, []);
 
 

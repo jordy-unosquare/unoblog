@@ -1,5 +1,5 @@
-import cloudinary from "@/lib/server/cloudinary";
-import { getServerAuthSession } from "@/lib/server/auth";
+import { getServerAuthSession } from "lib/server/auth";
+import cloudinary from "lib/server/cloudinary";
 
 export const POST = async (req: Request): Promise<Response> => {
   const data = await req.formData();
@@ -7,7 +7,7 @@ export const POST = async (req: Request): Promise<Response> => {
 
   const session = await getServerAuthSession();
 
-  if (!session || !session.user) {
+  if (!session?.user) {
     return new Response(JSON.stringify({ message: "Not Authenticated!" }), {
       status: 401,
     });

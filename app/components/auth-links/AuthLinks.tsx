@@ -24,11 +24,11 @@ const AuthLinks = () => {
         <>
             {session ? (
                 <>
-                    <Link href="/write" className='flex justify-items-center'>Write</Link>
+                    <Link href="/write">Write</Link>
                     <span className={styles.link} onClick={handleLogout}>
-                    {session?.user?.image && <Image src={session.user.image} alt="Logout" width={80} height={80} className='rounded-full'/>}
                         Logout
                     </span>
+                    {session?.user?.image && <Image src={session.user.image} alt="Logout" width={60} height={60} className='rounded-full'/>}
                 </>
             ) : (
                 <Link href="/login" className={styles.link}>Login</Link>
