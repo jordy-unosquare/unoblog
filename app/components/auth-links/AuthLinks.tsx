@@ -23,7 +23,7 @@ const AuthLinks = () => {
         <>
             {session ? (
                 <>
-                    <Link href="/write" className={styles.link} data-testId="writeLink">Write</Link>
+                    <Link href="/write" className={styles.link} data-testid="writeLink">Write</Link>
                     <span className={styles.link} onClick={handleLogout}>
                         Logout
                     </span>

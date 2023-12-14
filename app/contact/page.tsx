@@ -51,16 +51,20 @@ const Contact = () => {
               />
             </div>
             <form className={styles.form} onSubmit={handleSubmit}>
-              <input type="text" placeholder="name" name="name" className={styles.input} />
-              <input type="text" placeholder="email" name="email" className={styles.input} />
+              <input type="text" placeholder="name" name="name" className={styles.input} data-testid="contactName" required minLength={3}/>
+              <input type="email" placeholder="email" name="email" className={styles.input} data-testid="contactEmail" required minLength={3}/>
               <textarea
                 className={styles.textArea}
                 placeholder="message"
                 cols={30}
                 rows={10}
                 name="message"
+                data-testid="contactMessage"
+                required
+                minLength={6}
               ></textarea>
               <button type="submit"
+                data-testid="contactButton"
                 disabled={loading}
                 className={styles.button}> 
                 Send 
