@@ -8,7 +8,7 @@ import { type Category } from "@prisma/client";
 
 import styles from "./writePage.module.css";
 import "react-quill/dist/quill.bubble.css";
-import { getCategories, uploadToCloudinary } from "lib/data";
+import { ExtendedPost, getCategories, uploadToCloudinary } from "lib/data";
 
 const WritePage = () => {
   const { status } = useSession();
@@ -57,7 +57,7 @@ const WritePage = () => {
     });
 
     if (res.status === 200) {
-      const data = await res.json();
+      const data = await res.json() as ExtendedPost;
       router.push(`/posts/${data.slug}`);
     }
   };

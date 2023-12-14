@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./SinglePage.module.css";
 import { getSinglePost } from "lib/data";
 import Menu from "~/components/menu/Menu";
+import { Suspense } from "react";
 
 interface SinglePageProps {
   params: {
@@ -14,6 +15,7 @@ const SinglePage = async ({ params: { slug } }: SinglePageProps) => {
   const post = await getSinglePost(slug);
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className={styles.container}>
       <div className={styles.infoContainer}>
         <div className={styles.textContainer}>
@@ -52,6 +54,7 @@ const SinglePage = async ({ params: { slug } }: SinglePageProps) => {
         <Menu />
       </div>
     </div>
+    </Suspense>
   );
 };
 

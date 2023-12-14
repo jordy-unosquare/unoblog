@@ -1,5 +1,7 @@
 import type { Category, Post, User } from "@prisma/client";
 import type { PaginatedPostsResponse } from "./definitions";
+import { PageNotFoundError } from "next/dist/shared/lib/utils";
+import { notFound } from "next/navigation";
 
 export const getCategories = async (): Promise<Category[]> => {
   try {
@@ -12,11 +14,12 @@ export const getCategories = async (): Promise<Category[]> => {
       throw new Error("Failed to fetch");
     }
 
-    const responseData = await response.json();
+    const responseData = await response.json() as Category[];
 
     return responseData;
   } catch (err) {
-    throw new Error("Failed to upload");
+    console.error('getCategories', err);
+    return notFound();
   }
 };
 
@@ -34,14 +37,14 @@ export const getSinglePost = async (
     });
 
     if (!response.ok) {
-      throw new Error("Failed to fetch");
+      throw new Error("Failed to fetch post: " + slug);
     }
 
-    const responseData = await response.json();
-
+    const responseData = await response.json() as ExtendedPost;
     return responseData;
   } catch (error) {
-    throw new Error("Failed to fetch");
+    console.error('getSinglePost', error);
+    return notFound();
   }
 };
 
@@ -65,13 +68,14 @@ export const getPosts = async ({
     });
 
     if (!response.ok) {
-      throw new Error("Failed to fetch");
+      throw new Error("Not OK" + response.statusText);
     }
 
-    const responseData = await response.json();
+    const responseData = await response.json() as PaginatedPostsResponse;
     return responseData;
   } catch (error) {
-    throw new Error("Failed to fetch");
+    console.error('getPosts', error);
+    return notFound();
   }
 };
 
@@ -87,9 +91,10 @@ export const uploadToCloudinary = async (
       body: formData,
     });
 
-    const data = await response.json();
+    const data = await response.json() as { url: string };
     return data.url;
   } catch (error) {
-    throw new Error("Failed to upload");
+    console.error('uploadToCloudinary', error);
+    throw new Error('Failed to upload file');
   }
 };

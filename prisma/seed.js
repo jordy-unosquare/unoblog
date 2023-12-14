@@ -1,8 +1,10 @@
-import type { Category, Post } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export const status = "authenticated";
 
-export const categories: Category[] = [
+export const categories = [
   {
     id: "1",
     title: "JavaScript",
@@ -41,7 +43,7 @@ export const categories: Category[] = [
   },
 ];
 
-export const posts: Post[] = [
+export const posts = [
   {
     id: "1",
     createdAt: new Date("2021-01-01"),
@@ -75,3 +77,29 @@ export const posts: Post[] = [
     },
   }
 ];
+
+async function main() {
+  console.log(`Start seeding ...`);
+  for (const category of categories) {
+    const categoryExists = await prisma.category.findUnique({
+      where: { slug: category.slug },
+    });
+
+    if (!categoryExists) {
+      await prisma.category.create({
+        data: category,
+      });
+      console.log(`Created category with slug: ${category?.slug}`);
+    }
+  }
+  console.log(`Seeding finished.`);
+}
+
+main()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(() => {
+    prisma.$disconnect().catch(console.error);
+  });
