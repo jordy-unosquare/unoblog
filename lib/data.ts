@@ -1,5 +1,5 @@
-import { Category, PaginatedPostsResponse, Post } from "./definitions";
-import { posts, categories } from "@/lib/placeholder-data";
+import type { Category, PaginatedPostsResponse, Post } from "./definitions";
+import { posts, categories } from "lib/placeholder-data";
 
 export const getCategories = async (): Promise<Category[]> => {
   return new Promise((resolve) => {

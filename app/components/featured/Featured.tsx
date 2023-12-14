@@ -1,16 +1,18 @@
-
 import React from 'react'
 import Image from 'next/image'
 
 import styles from './Featured.module.css'
-import { getSession } from 'next-auth/react';
-const session = getSession();
-const Featured = () => {
+import { getServerAuthSession } from 'lib/server/auth';
+const Featured = async () => {
+    const session = await getServerAuthSession();
+    //const { data: session } = useSession();
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>
-                <b>Hello there! {JSON.stringify(session)}</b> Discover the best place to work.
+                <b>Hello there! {session?.user?.name}</b><br/>
             </h1>
+            <p className='text-xl'>This is a blog to make your own coding playlists while discovering the best place to work!.</p>
+
             <div className={styles.post}>
                 <div className={styles.imageContainer}>
                     <Image src="https://res.cloudinary.com/dqcoo1wnq/image/upload/v1702406848/njmh0frr0zax62yuwgoi.jpg" alt="" fill className={styles.image} />
