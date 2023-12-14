@@ -15,5 +15,5 @@ jobs:
     - uses: wangchucheng/git-repo-sync@v0.1.0
       with:
         target-url: https://gitlab.com/pablo-alex1/nextjs-blog.git
-        target-username: ${{ secrets.TARGET_USERNAME }}
-        target-token: ${{ secrets.TARGET_TOKEN }}
+        target-username: ${{ SYNC.TARGET_USERNAME }}
+        target-token: ${{ SYNC.TARGET_TOKEN }}
