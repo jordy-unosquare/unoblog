@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+    - completed
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository 
+      uses: actions/checkout@v2
+
+    - name: Build 
+      run: | 
+        echo "Building the project …" 
+        # Add your build commands here
+
+    - name: Deploy
+      if: success() # This step will run only if the previous step was successful
+
+      run: | 
+        echo "Deploying the project … "
+        # Add your deployment commands here
