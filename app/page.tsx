@@ -4,7 +4,6 @@ import CardList from "./components/card-list/CardList";
 import CategoryList from "./components/category-list/CategoryList";
 import Featured from "./components/featured/Featured";
 import Menu from "./components/menu/Menu";
-import { Suspense } from "react";
 import styles from "./page.module.css";
 
 interface HomeProps {
@@ -21,11 +20,9 @@ export default function Home({ searchParams }: HomeProps) {
   const limit = parseInt(searchParams.limit) || 4;
 
   return (
-    <main className={styles.container}>
+    <main>
       <Featured />
-      <Suspense fallback={<div>Loading...</div>} >
-        <CategoryList />
-      </Suspense>
+      <CategoryList />
       <div className={styles.content}>
         <CardList page={page} cat={cat} limit={limit} />
         <Menu />

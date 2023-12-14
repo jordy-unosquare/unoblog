@@ -14,7 +14,7 @@ const LoginPage = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.wrapper}>
+      <div className='w-full bg-green'>
         <div className={styles.socialButton} onClick={() => signIn("google")} >
           Sign in with Google
         </div>

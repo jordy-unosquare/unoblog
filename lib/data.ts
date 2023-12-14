@@ -44,7 +44,7 @@ export const getSinglePost = async (
     return responseData;
   } catch (error) {
     console.error('getSinglePost', error);
-    return notFound();
+    return null
   }
 };
 
@@ -56,7 +56,7 @@ export const getPosts = async ({
   cat?: string;
   page: number;
   limit: number;
-}): Promise<PaginatedPostsResponse> => {
+}): Promise<PaginatedPostsResponse | null> => {
   try {
     const url = `http://localhost:3000/api/posts?page=${page}&limit=${limit}${
       cat ? `&cat=${cat}` : ""
@@ -75,7 +75,7 @@ export const getPosts = async ({
     return responseData;
   } catch (error) {
     console.error('getPosts', error);
-    return notFound();
+    return null;
   }
 };
 

@@ -1,14 +1,15 @@
-'use client'
-import Link from 'next/link'
-import React from 'react'
+'use client';
 
-const NotFound = () => {
-  return (
-    <div>
-      <h2>We did not find that post!</h2>
-      <Link href='/'>Go back</Link>
-    </div>
-  )
+export default function ErrorBoundary({
+    error,
+    reset,    
+}: {
+    error: Error;
+    reset: () => void;
+}){
+    return(
+        <div>
+            {error.message}<button onClick={reset}>Try again</button>
+        </div>
+    )
 }
-
-export default NotFound
