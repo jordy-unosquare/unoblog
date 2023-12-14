@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { signOut, useSession } from "next-auth/react";
 
 import styles from './AuthLinks.module.css'
+import Image from 'next/image';
 
 const AuthLinks = () => {
     const [open, setOpen] = useState(false)
@@ -25,6 +26,7 @@ const AuthLinks = () => {
                 <>
                     <Link href="/write" className={styles.link}>Write</Link>
                     <span className={styles.link} onClick={handleLogout}>
+                    {session?.user?.image && <Image src={session.user.image} alt="Logout" width={80} height={80}/>}
                         Logout
                     </span>
                 </>
