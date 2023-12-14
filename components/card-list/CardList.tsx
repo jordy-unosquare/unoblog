@@ -22,6 +22,10 @@ const CardList = async ({ page, cat, limit }: CardListProps) => {
         }
     } = await getPosts({ page, cat, limit })
 
+    if (!posts.length) {
+        return <div>404</div>
+    }
+
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Recent Posts</h1>

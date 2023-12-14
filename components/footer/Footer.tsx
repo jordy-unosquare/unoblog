@@ -8,6 +8,10 @@ import { getCategories } from "@/lib/data";
 const Footer = async () => {
     const categories = await getCategories();
 
+    if (!categories.length) {
+        return <div>404</div>;
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.info}>

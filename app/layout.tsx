@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import AuthProvider from '../lib/providers/AuthProvider'
 import ThemeContextProvider from '../lib/providers/ThemeProvider'
-import Navbar from './components/navbar/Navbar'
-import Footer from './components/footer/Footer'
+import Navbar from '../components/navbar/Navbar'
+import Footer from '../components/footer/Footer'
 
 
 import './globals.css'

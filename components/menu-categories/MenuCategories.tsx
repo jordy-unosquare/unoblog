@@ -7,6 +7,10 @@ import styles from "./MenuCategories.module.css";
 const MenuCategories = async () => {
   const categories = await getCategories();
 
+  if (!categories.length) {
+    return <div>404</div>;
+  }
+
   return (
     <div className={styles.categoryList}>
       {categories.map((item) => (

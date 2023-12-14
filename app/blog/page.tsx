@@ -1,6 +1,6 @@
 
-import CardList from "../components/card-list/CardList";
-import Menu from "../components/menu/Menu";
+import CardList from "../../components/card-list/CardList";
+import Menu from "../../components/menu/Menu";
 import styles from "./Blog.module.css";
 import { Suspense } from "react";
 

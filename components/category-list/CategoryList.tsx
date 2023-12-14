@@ -7,6 +7,10 @@ import styles from './CategoryList.module.css'
 const CategoryList = async () => {
     const categories = await getCategories();
 
+    if (!categories.length) {
+        return <div>404</div>
+    }
+
     return (
         <div className={styles.container}>
             <h1 className={styles.title}>Popular Categories</h1>

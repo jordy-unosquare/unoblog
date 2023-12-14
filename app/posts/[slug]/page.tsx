@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import styles from "./SinglePage.module.css";
-import Menu from "@/app/components/menu/Menu";
+import Menu from "@/components/menu/Menu";
 import { getSinglePost } from "@/lib/data";
 
 interface SinglePageProps {
@@ -10,8 +10,12 @@ interface SinglePageProps {
   };
 }
 
-const SinglePage = async ({ params: { slug } }: SinglePageProps) => {
+const SinglePage = async ({ params: { slug = "" } }: SinglePageProps) => {
   const post = await getSinglePost(slug);
+
+  if (!post) {
+    return <div>404</div>;
+  }
 
   return (
     <div className={styles.container}>

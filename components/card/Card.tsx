@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Post } from "@/lib/definitions";
+import { Post } from "@prisma/client";
 
 import styles from "./Card.module.css";
 
