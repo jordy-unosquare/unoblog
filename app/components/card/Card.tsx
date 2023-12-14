@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Post } from "@/lib/definitions";
 
 import styles from "./Card.module.css";
 
-const Card = ({ post }: { post: Post }) => {
+const Card = ({ post }: { post: any }) => {
   return (
     <div className={styles.container} key={post.id}>
       {post.img && (
