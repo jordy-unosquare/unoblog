@@ -1,7 +1,8 @@
 import Image from "next/image";
 
 import styles from "./SinglePage.module.css";
-import { getSinglePost } from "~/lib/data";
+import Menu from "@/app/components/menu/Menu";
+import { getSinglePost } from "@/lib/data";
 
 interface SinglePageProps {
   params: {

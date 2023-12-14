@@ -2,9 +2,9 @@
 import React from 'react'
 import Card from '../card/Card'
 import Pagination from '../pagination/Pagination'
+import { getPosts } from '@/lib/data';
 
 import styles from './CardList.module.css'
-import { getPosts } from 'lib/data';
 
 interface CardListProps {
     cat: string;

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import styles from "./Footer.module.css";
-import { getCategories } from "lib/data";
+import { getCategories } from "@/lib/data";
 
 const Footer = async () => {
     const categories = await getCategories();
