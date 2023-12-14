@@ -2,7 +2,10 @@ import Image from "next/image";
 
 import styles from "./SinglePage.module.css";
 import Menu from "@/app/components/menu/Menu";
+import Comments from "@/app/components/comments/Comments";
+
 import { getSinglePost } from "@/lib/data";
+
 
 interface SinglePageProps {
   params: {
@@ -21,7 +24,7 @@ const SinglePage = async ({ params: { slug } }: SinglePageProps) => {
           <div className={styles.user}>
             {post?.user?.image && (
               <div className={styles.userImageContainer}>
-                <Image src={"https://lh3.googleusercontent.com/a/ACg8ocJZJ89wGhnPGsRaOGKAL2JOBik9nX81bczo3PtqFkR4iy0=s96-c"} alt="" fill className={styles.avatar} />
+                <Image src={post.user.image} alt="" fill className={styles.avatar} />
               </div>
             )}
             <div className={styles.userTextContainer}>
@@ -48,6 +51,9 @@ const SinglePage = async ({ params: { slug } }: SinglePageProps) => {
             className={styles.description}
             dangerouslySetInnerHTML={{ __html: post?.desc ?? '' }}
           />
+          <div className={styles.comment}>
+            <Comments postSlug={slug}/>
+          </div>
         </div>
         <Menu />
       </div>
