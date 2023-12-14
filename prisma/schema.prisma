@@ -59,10 +59,10 @@ model VerificationToken {
 
 // Blog models
 model Category {
-  id    String  @id @default(cuid()) @map("_id")
-  slug  String  @unique
+  id    String @id @default(cuid()) @map("_id")
+  slug  String @unique
   title String
-  color String?
+  color String
   Posts Post[]
 }
 
